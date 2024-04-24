@@ -26,7 +26,7 @@ const initialState = {
     },
     {
       id: '4',
-      title: 'Article title 3',
+      title: 'Article title 4',
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
       publishedDate: '02-04-2022',

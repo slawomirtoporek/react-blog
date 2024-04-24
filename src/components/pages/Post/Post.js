@@ -4,6 +4,7 @@ import { getElementById } from "../../../redux/postsRedux";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import styles from "./Post.module.scss";
+import RemovePost from "../RemovePost/RemovePost";
 
 const Post = () => {
 
@@ -29,7 +30,7 @@ const Post = () => {
               <Button variant="outline-primary" className="me-2">Edit</Button>
             </Link>
             <Link>
-              <Button variant="outline-danger">Delete</Button>
+              <RemovePost id={posts.id} />
             </Link>
           </Col>
         </>
