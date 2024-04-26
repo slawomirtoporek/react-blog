@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { removePost } from "../../../redux/postsRedux";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 
 

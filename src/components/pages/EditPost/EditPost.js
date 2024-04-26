@@ -1,6 +1,6 @@
 const EditPost = () => {
   return(
-    <h1>EditPost</h1>
+    <h1 className="fs-3">EditPost</h1>
   );
 };
 
