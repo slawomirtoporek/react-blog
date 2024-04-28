@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -40,8 +42,7 @@ const PostForm = ({ action, actionText, ...props }) => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="mainContent">
         <Form.Label>Main content</Form.Label>
-        <Form.Control as="textarea" rows={3} placeholder="Main content" 
-          value={content} onChange={(e) => setContent(e.target.value)} />
+        <ReactQuill placeholder="Main content" theme="snow" value={content} onChange={setContent} />
       </Form.Group>
       <Button variant="primary" type="submit">{ actionText }</Button>
     </Form>
