@@ -5,6 +5,7 @@ import { Row, Col, Card, Button, Container } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import styles from "./Post.module.scss";
 import RemovePost from "../RemovePost/RemovePost";
+import dateToStr from "../../../utils/dateToStr";
 
 const Post = () => {
 
@@ -21,7 +22,7 @@ const Post = () => {
             <div className={`d-flex flex-column align-items-start ${styles.boxPosts}`}>
               <Card.Title className="fs-3 mb-3">{posts.title}</Card.Title>
               <Card.Text className="m-0"><span className={styles.headerBold}>Author:</span> {posts.author}</Card.Text>
-              <Card.Text><span className={styles.headerBold}>Published:</span> {posts.publishedDate}</Card.Text>
+              <Card.Text><span className={styles.headerBold}>Published:</span> {dateToStr(posts.publishedDate)}</Card.Text>
               <Card.Text dangerouslySetInnerHTML={{ __html: posts.content }} />
             </div>
           </Col>
