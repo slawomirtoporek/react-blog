@@ -6,23 +6,29 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../../redux/categoriesRedux';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
   const [publishedDate, setPublishedDate] = useState(new Date() || '');
+  const [category, setCategory] = useState(props.category || '');
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const [categoryError, serCategoryError] = useState(false);
+  const categories = useSelector(getAllCategories);
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
   const handleSubmit = e => {
     setContentError(!content)
     setDateError(!publishedDate)
-    if(content && publishedDate) {
-      action({ title, shortDescription, content, publishedDate, author });
+    serCategoryError(!category);
+    if(content && publishedDate && category) {
+      action({ title, shortDescription, content, publishedDate, author, category });
     };
   };
 
@@ -65,6 +71,22 @@ const PostForm = ({ action, actionText, ...props }) => {
             <small className="d-block form-text text-danger mt-2">
               Published can't be empty
             </small>}
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="category">
+        <Form.Label>Category</Form.Label>
+        <Form.Select
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+          >
+          <option value="default">Select category...</option>
+          {categories.map(category => (
+            <option key={category.id} value={category.name.toLowerCase()}>{category.name}</option>
+          ))};
+        </Form.Select>
+        {categoryError && 
+          <small className="d-block form-text text-danger mt-2">
+            Category can't be empty
+          </small>}
       </Form.Group>
       <Form.Group className="mb-3" controlId="shortDescription">
         <Form.Label>Short description</Form.Label>
