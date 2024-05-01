@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux';
 import { getAllCategories } from '../../../redux/categoriesRedux';
+import styles from './PostForm.module.scss';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -66,6 +67,7 @@ const PostForm = ({ action, actionText, ...props }) => {
           selected={publishedDate} 
           onChange={(date) => setPublishedDate(date)}
           placeholder="Enter date"
+          className={styles.datePicker}
           />
           {dateError && 
             <small className="d-block form-text text-danger mt-2">
@@ -107,6 +109,7 @@ const PostForm = ({ action, actionText, ...props }) => {
           value={content}
           onChange={setContent} 
           placeholder="Main content" theme="snow"
+          className={styles.content}
         />
         {contentError && 
           <small className="d-block form-text text-danger mt-2">
