@@ -82,7 +82,7 @@ const PostForm = ({ action, actionText, ...props }) => {
           >
           <option value="default">Select category...</option>
           {categories.map(category => (
-            <option key={category.id} value={category.name.toLowerCase()}>{category.name}</option>
+            <option key={category.id} value={category.name}>{category.name}</option>
           ))};
         </Form.Select>
         {categoryError && 

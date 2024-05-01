@@ -4,7 +4,7 @@ export const getAllCategories = ({ categories }) => categories;
 // actions
 // const createActionName = actionName => `app/categories/${actionName}`;
 
-// action creator
+// action creators
 
 const categoriesReducer = (statePart = [], action) => {
   switch (action.type) {
